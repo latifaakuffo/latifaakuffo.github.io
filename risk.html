@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latifa Akuffo | Risk Associate</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0B1929;
+    --surface: #0F2138;
+    --surface2: #132843;
+    --coral: #E8562A;
+    --coral-light: #FF7A52;
+    --gold: #C8922A;
+    --teal: #1A9E8A;
+    --text: #E8EDF5;
+    --text-dim: #8FA3BF;
+    --border: #1A3050;
+    --green: #22C55E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(11,25,41,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--coral); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    padding: 100px 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,86,42,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(26,158,138,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-role {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 400;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-summary {
+    font-size: 1rem;
+    color: var(--text-dim);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: white;
+    padding: 0.7rem 1.75rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--coral-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.7rem 1.75rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--coral); color: var(--coral); }
+
+  /* METRICS STRIP */
+  .metrics {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem;
+  }
+
+  .metrics-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .metric {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .metric-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* RCSA MAP — SIGNATURE ELEMENT */
+  .rcsa-section {
+    padding: 5rem 2rem;
+    background: var(--bg);
+  }
+
+  .rcsa-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--text);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .rcsa-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .rcsa-cell {
+    background: var(--surface);
+    padding: 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .rcsa-cell:hover { background: var(--surface2); }
+
+  .rcsa-domain {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .rcsa-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .rcsa-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .rcsa-items li {
+    font-size: 12px;
+    color: var(--text-dim);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .rcsa-items li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: 600;
+  }
+
+  .rcsa-status {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px rgba(34,197,94,0.5);
+  }
+
+  /* CLAUDE FEATURE */
+  .claude-section {
+    padding: 5rem 2rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .claude-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .claude-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,86,42,0.1);
+    border: 1px solid rgba(232,86,42,0.3);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--coral);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .claude-uses {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .claude-use {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--coral);
+    padding: 1rem 1.25rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .claude-use strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 13px;
+  }
+
+  .terminal {
+    background: #020D18;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    background: var(--surface2);
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .terminal-body {
+    padding: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #6EE7B7;
+  }
+
+  .t-grey { color: #4B6075; }
+  .t-coral { color: var(--coral); }
+  .t-white { color: #E8EDF5; }
+  .t-teal { color: var(--teal); }
+  .t-gold { color: var(--gold); }
+
+  /* EXPERIENCE */
+  .exp-section {
+    padding: 5rem 2rem;
+    background: var(--bg);
+  }
+
+  .exp-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .exp-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+  }
+
+  .exp-meta { border-right: 1px solid var(--border); padding-right: 2rem; }
+
+  .exp-org {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--coral);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+
+  .exp-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+    font-weight: 400;
+  }
+
+  .exp-dates {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .exp-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: 600;
+  }
+
+  /* REGULATORY */
+  .reg-section {
+    padding: 5rem 2rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .reg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .reg-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+  }
+
+  .reg-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .reg-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .reg-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .contact-sub {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.65rem 1.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-link:hover { border-color: var(--coral); color: var(--coral); }
+
+  @media (max-width: 700px) {
+    .rcsa-grid { grid-template-columns: 1fr; }
+    .claude-inner { grid-template-columns: 1fr; }
+    .exp-card { grid-template-columns: 1fr; }
+    .exp-meta { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 1rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-mark">LA // RISK</span>
+  <ul class="nav-links">
+    <li><a href="#rcsa">RCSA Framework</a></li>
+    <li><a href="#claude">AI Tooling</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#regulatory">Regulatory</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">Risk and Compliance Associate</p>
+    <h1>Latifa<br><em>Akuffo</em></h1>
+    <p class="hero-role">Enterprise Risk Management &bull; AML/CFT &bull; Governance Reporting &bull; Claude AI</p>
+    <p class="hero-summary">Second-line risk professional with hands-on ERM experience across RCSA coordination, KRI monitoring, board-level governance reporting and regulatory horizon scanning. Proficient in Claude AI for risk analysis and regulatory intelligence.</p>
+    <div class="hero-cta">
+      <a href="#rcsa" class="btn-primary">View RCSA Coverage</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metrics-inner">
+    <div class="metric"><div class="metric-value">100+</div><div class="metric-label">Accounts Governed</div></div>
+    <div class="metric"><div class="metric-value">98%</div><div class="metric-label">Documentation Accuracy</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">RCSA Domains</div></div>
+    <div class="metric"><div class="metric-value">0</div><div class="metric-label">Regulatory Breaches</div></div>
+    <div class="metric"><div class="metric-value">40%</div><div class="metric-label">Reporting Efficiency Gain</div></div>
+  </div>
+</div>
+
+<!-- RCSA MAP -->
+<section class="rcsa-section" id="rcsa">
+  <div class="rcsa-inner">
+    <p class="section-eyebrow">Signature Capability</p>
+    <h2 class="section-title">RCSA Programme Coverage</h2>
+    <div class="rcsa-grid">
+
+      <div class="rcsa-cell">
+        <div class="rcsa-status"></div>
+        <div class="rcsa-domain">Domain 01</div>
+        <div class="rcsa-title">AML / CFT</div>
+        <ul class="rcsa-items">
+          <li>Transaction monitoring and typology analysis</li>
+          <li>SAR preparation and MLRO escalation</li>
+          <li>Sanctions, PEP and adverse media screening</li>
+          <li>Consent SAR process and NCA liaison</li>
+          <li>JMLSG Guidance and MLRs 2017 aligned</li>
+        </ul>
+      </div>
+
+      <div class="rcsa-cell">
+        <div class="rcsa-status"></div>
+        <div class="rcsa-domain">Domain 02</div>
+        <div class="rcsa-title">Operational Risk</div>
+        <ul class="rcsa-items">
+          <li>Operational risk incident register maintenance</li>
+          <li>KRI monitoring and threshold tracking</li>
+          <li>Control effectiveness assessment</li>
+          <li>Risk appetite framework awareness</li>
+          <li>Audit-ready version-controlled documentation</li>
+        </ul>
+      </div>
+
+      <div class="rcsa-cell">
+        <div class="rcsa-status"></div>
+        <div class="rcsa-domain">Domain 03</div>
+        <div class="rcsa-title">Consumer Protection</div>
+        <ul class="rcsa-items">
+          <li>Consumer Protection Code 2025 alignment</li>
+          <li>Consumer Duty and good customer outcomes</li>
+          <li>Complaints escalation and resolution</li>
+          <li>Vulnerability framework awareness</li>
+          <li>Third-party and outsourcing risk oversight</li>
+        </ul>
+      </div>
+
+      <div class="rcsa-cell">
+        <div class="rcsa-status"></div>
+        <div class="rcsa-domain">Domain 04</div>
+        <div class="rcsa-title">ICT / Cyber and Outsourcing</div>
+        <ul class="rcsa-items">
+          <li>DORA obligations awareness and embedding</li>
+          <li>EBA outsourcing guidelines compliance</li>
+          <li>Third-party risk management frameworks</li>
+          <li>ICT and cyber risk register contribution</li>
+          <li>Regulatory change impact assessment</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLAUDE AI FEATURE -->
+<section class="claude-section" id="claude">
+  <div class="claude-inner">
+    <div>
+      <div class="claude-badge">&#9679; Required Skill — Remitly</div>
+      <p class="section-eyebrow">AI Tooling</p>
+      <h2 class="section-title">Proficient in Claude</h2>
+      <p style="color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:1rem;">Not just as a chat tool. Claude is used daily to accelerate regulatory research, generate structured risk summaries, build governance documentation and identify cross-regulatory dependencies across ERM frameworks — exactly what Remitly listed as a required capability.</p>
+      <div class="claude-uses">
+        <div class="claude-use"><strong>Regulatory Intelligence</strong>Summarise CBI, EBA and ESMA publications, extract key obligations and map them to the enterprise risk framework.</div>
+        <div class="claude-use"><strong>Horizon-Scanning Logs</strong>Generate structured regulatory change logs with impact assessments and cross-framework dependency mapping.</div>
+        <div class="claude-use"><strong>Governance Documentation</strong>Build audit-ready RCSA documentation, risk committee papers and KRI monitoring reports efficiently.</div>
+        <div class="claude-use"><strong>Risk Pattern Analysis</strong>Structure complex AML/CFT typology analysis and escalation rationale for MLRO and CRO review.</div>
+      </div>
+    </div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dot" style="background:#FF5F57"></div>
+        <div class="terminal-dot" style="background:#FFBD2E"></div>
+        <div class="terminal-dot" style="background:#28C840"></div>
+      </div>
+      <div class="terminal-body">
+        <span class="t-grey">// Regulatory horizon scan — July 2026</span><br><br>
+        <span class="t-teal">prompt</span><span class="t-white">:</span> <span class="t-gold">"Summarise DORA obligations<br>applicable to payment institutions<br>under CBI supervision and map<br>to our ICT risk register"</span><br><br>
+        <span class="t-grey">─────────────────────────────</span><br>
+        <span class="t-teal">output</span><span class="t-white">:</span><br>
+        <span class="t-white">ICT Risk Register Update</span><br>
+        <span class="t-grey">› Article 5: ICT governance ✓</span><br>
+        <span class="t-grey">› Article 17: Incident reporting ✓</span><br>
+        <span class="t-grey">› Article 28: Third-party risk ✓</span><br>
+        <span class="t-coral">› Article 30: Testing — gap ⚠</span><br><br>
+        <span class="t-grey">Horizon log updated.</span><br>
+        <span class="t-grey">Board pack: ready for review.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-section" id="experience">
+  <div class="exp-inner">
+    <p class="section-eyebrow">Track Record</p>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="exp-cards">
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <div class="exp-org">Current Role</div>
+          <div class="exp-title">Risk and Compliance Associate</div>
+          <div class="exp-dates" style="margin-bottom:0.5rem;">Sep 2025 — Present</div>
+          <div class="exp-dates">FCA-Regulated Financial Services Consultancy</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Coordinated second-line RCSA programme across AML/CFT, Operational Risk and Consumer Protection domains for 100+ accounts, zero breaches</li>
+          <li>Produced risk dashboards, KRI monitoring reports and risk and controls committee papers for CRO-level review</li>
+          <li>Monitored CBI, FCA, EBA and ESMA publications using Claude AI to maintain a structured horizon-scanning log</li>
+          <li>Advised Legal, Operations and Finance on AML/CFT risk, Consumer Protection Code obligations and third-party risk</li>
+          <li>Identified and resolved data quality issues using SQL and Python, reducing error rates to zero in subsequent reviews</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <div class="exp-org">Previous Role</div>
+          <div class="exp-title">Finance Operations and Risk Analyst</div>
+          <div class="exp-dates" style="margin-bottom:0.5rem;">Aug 2021 — Sep 2023</div>
+          <div class="exp-dates">Scientific and Laboratory Products Organisation</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built automated risk monitoring systems using Python and SQL, delivering 40% workload reduction and 15% accuracy improvement</li>
+          <li>Applied SQL and Python for risk-based anomaly detection, improving detection accuracy by 15%</li>
+          <li>Implemented governance documentation remediation plan, confirmed sustainable at subsequent internal review</li>
+          <li>Built Power BI dashboards tracking operational risk KRIs and control effectiveness for senior management</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <div class="exp-org">Earlier Role</div>
+          <div class="exp-title">Project Support Officer</div>
+          <div class="exp-dates" style="margin-bottom:0.5rem;">Sep 2020 — Aug 2021</div>
+          <div class="exp-dates">Government Export Promotion Agency</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed and implemented enterprise risk register and AML/CFT monitoring framework from scratch, confirmed 100% compliant by external audit</li>
+          <li>Produced risk and compliance governance packs for senior stakeholders, format adopted as organisational standard</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REGULATORY FRAMEWORKS -->
+<section class="reg-section" id="regulatory">
+  <div class="rcsa-inner">
+    <p class="section-eyebrow">Regulatory Knowledge</p>
+    <h2 class="section-title">Frameworks and Standards</h2>
+    <div class="reg-grid">
+      <div class="reg-card"><div class="reg-label">Irish Regulator</div><div class="reg-name">CBI / PSD2</div><div class="reg-desc">Central Bank of Ireland framework for payment institutions and e-money firms passporting across the EEA.</div></div>
+      <div class="reg-card"><div class="reg-label">EU Digital Resilience</div><div class="reg-name">DORA</div><div class="reg-desc">Digital Operational Resilience Act — ICT risk, incident reporting, third-party oversight and testing obligations.</div></div>
+      <div class="reg-card"><div class="reg-label">EU Outsourcing</div><div class="reg-name">EBA Guidelines</div><div class="reg-desc">EBA outsourcing guidelines governing third-party risk management and vendor oversight frameworks.</div></div>
+      <div class="reg-card"><div class="reg-label">Irish Consumer</div><div class="reg-name">Consumer Protection Code 2025</div><div class="reg-desc">CBI's updated code governing consumer protection standards for regulated firms in Ireland.</div></div>
+      <div class="reg-card"><div class="reg-label">UK AML</div><div class="reg-name">MLRs 2017 / JMLSG</div><div class="reg-desc">Money Laundering Regulations and JMLSG Guidance governing AML/CFT compliance in UK financial services.</div></div>
+      <div class="reg-card"><div class="reg-label">UK Financial Crime</div><div class="reg-name">POCA 2002</div><div class="reg-desc">Proceeds of Crime Act — SAR mechanics, consent SARs, moratorium periods and tipping off provisions.</div></div>
+      <div class="reg-card"><div class="reg-label">UK Regulator</div><div class="reg-name">FCA Handbook</div><div class="reg-desc">FCA regulatory framework including Consumer Duty, financial crime controls and supervisory expectations.</div></div>
+      <div class="reg-card"><div class="reg-label">Global Standard</div><div class="reg-name">FATF Recommendations</div><div class="reg-desc">FATF risk-based approach, EDD triggers, PEP handling and typology frameworks for AML/CFT compliance.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <h2 class="contact-title">Open to Risk Opportunities</h2>
+  <p class="contact-sub">Based in Manchester. Open to relocation to Dublin. Critical Skills Employment Permit eligible. Full right to work in the UK.</p>
+  <div class="contact-links">
+    <a href="mailto:latifaakuffo@gmail.com" class="contact-link">latifaakuffo@gmail.com</a>
+    <a href="https://linkedin.com/in/latifaakuffo" class="contact-link">LinkedIn</a>
+    <a href="https://latifaakuffo.github.io" class="contact-link">Main Portfolio</a>
+  </div>
+</section>
+
+</body>
+</html>
